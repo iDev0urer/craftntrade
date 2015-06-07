@@ -1,0 +1,41 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  title: MyString
+  specifics: 
+  details: MyText
+  listing_format: MyString
+  buy_now: false
+  start_date: 2015-06-06 23:13:43
+  end_date: 2015-06-06 23:13:43
+  added_date: 2015-06-06 23:13:43
+  ended_date: 2015-06-06 23:13:43
+  shippable: false
+  free_shipping: false
+  weight: 1
+  width: 1
+  height: 1
+  length: 1
+  paypal_email: MyString
+  item_location: 1
+
+two:
+  user_id: 1
+  title: MyString
+  specifics: 
+  details: MyText
+  listing_format: MyString
+  buy_now: false
+  start_date: 2015-06-06 23:13:43
+  end_date: 2015-06-06 23:13:43
+  added_date: 2015-06-06 23:13:43
+  ended_date: 2015-06-06 23:13:43
+  shippable: false
+  free_shipping: false
+  weight: 1
+  width: 1
+  height: 1
+  length: 1
+  paypal_email: MyString
+  item_location: 1
