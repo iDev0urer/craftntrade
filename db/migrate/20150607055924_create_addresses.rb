@@ -8,7 +8,8 @@ class CreateAddresses < ActiveRecord::Migration
       t.string    :city,         null: false
       t.string    :state,        null: false
       t.integer   :zip,          null: false
-      t.string    :type,         null: false, default: 'residential'
+      t.string    :address_type, null: false, default: 'residential'
+      t.boolean   :default,      null: false, default: true
 
       t.timestamps null: false
     end

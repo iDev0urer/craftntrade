@@ -13,4 +13,22 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require semantic-ui
+//= require cocoon
 //= require_tree .
+
+$(document).ready(function() {
+  $('#s3-uploader').S3Uploader();
+});
+
+$('.ui.checkbox').checkbox();
+
+$('.message .close').on('click', function() {
+  $(this).closest('.message').fadeOut();
+});
+
+$('.dropdown')
+  .dropdown({
+    // you can use any ui transition
+    transition: 'drop'
+  });

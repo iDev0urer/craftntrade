@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150607055924) do
+ActiveRecord::Schema.define(version: 20150609225624) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,15 +19,16 @@ ActiveRecord::Schema.define(version: 20150607055924) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "line_one",   default: "",            null: false
-    t.string   "line_two",   default: ""
+    t.string   "line_one",     default: "",            null: false
+    t.string   "line_two",     default: ""
     t.integer  "apartment"
-    t.string   "city",                               null: false
-    t.string   "state",                              null: false
-    t.integer  "zip",                                null: false
-    t.string   "type",       default: "residential", null: false
-    t.datetime "created_at",                         null: false
-    t.datetime "updated_at",                         null: false
+    t.string   "city",                                 null: false
+    t.string   "state",                                null: false
+    t.integer  "zip",                                  null: false
+    t.string   "address_type", default: "residential", null: false
+    t.boolean  "default",      default: true,          null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
@@ -54,23 +55,25 @@ ActiveRecord::Schema.define(version: 20150607055924) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",               default: "", null: false
-    t.string   "email",                  default: "", null: false
-    t.string   "first_name",             default: "", null: false
+    t.string   "username",               default: "",    null: false
+    t.string   "email",                  default: "",    null: false
+    t.string   "first_name",             default: "",    null: false
     t.string   "middle_initial",         default: ""
-    t.string   "last_name",              default: "", null: false
+    t.string   "last_name",              default: "",    null: false
     t.integer  "profile_pic_id",         default: 0
-    t.string   "encrypted_password",     default: "", null: false
+    t.string   "encrypted_password",     default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,     null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.boolean  "mailing_list",           default: false
+    t.string   "gender"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
