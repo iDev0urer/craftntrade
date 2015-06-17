@@ -7,15 +7,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render "partials/navbar" %>
-
 <div class="main container">
-
-  <%= semantic_flash %>
   <%= yield %>
 </div>
-
-<%= render "partials/footer" %>
 
 <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
 </body>

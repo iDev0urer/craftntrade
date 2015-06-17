@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150609225624) do
+ActiveRecord::Schema.define(version: 20150615234055) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,52 +33,64 @@ ActiveRecord::Schema.define(version: 20150609225624) do
 
   add_index "addresses", ["user_id"], name: "index_addresses_on_user_id", using: :btree
 
+  create_table "api_keys", force: :cascade do |t|
+    t.integer  "user_id",         null: false
+    t.string   "value",           null: false
+    t.datetime "expiration_date"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "auctions", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "title"
-    t.hstore   "specifics"
-    t.text     "details"
-    t.string   "listing_format"
-    t.boolean  "buy_now"
-    t.datetime "start_date"
-    t.datetime "end_date"
-    t.datetime "added_date"
-    t.datetime "ended_date"
-    t.integer  "pick_up_only"
+    t.string   "title",          default: "",        null: false
+    t.text     "details",        default: ""
+    t.string   "listing_format", default: "auction", null: false
+    t.boolean  "buy_now",        default: false,     null: false
+    t.datetime "start_date",                         null: false
+    t.datetime "end_date",                           null: false
+    t.datetime "added_date",                         null: false
+    t.datetime "ended_date",                         null: false
+    t.integer  "pick_up_only",                       null: false
     t.boolean  "free_shipping"
     t.integer  "weight"
     t.integer  "width"
     t.integer  "height"
     t.integer  "length"
-    t.string   "paypal_email"
-    t.integer  "item_location"
+    t.string   "paypal_email",                       null: false
+    t.integer  "item_location",                      null: false
+    t.json     "specifics"
+  end
+
+  add_index "auctions", ["user_id"], name: "index_auctions_on_user_id", using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "auction_id"
+    t.string   "photo"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "username",               default: "",    null: false
-    t.string   "email",                  default: "",    null: false
-    t.string   "first_name",             default: "",    null: false
-    t.string   "middle_initial",         default: ""
-    t.string   "last_name",              default: "",    null: false
-    t.integer  "profile_pic_id",         default: 0
-    t.string   "encrypted_password",     default: "",    null: false
+    t.string   "email",                  default: "", null: false
+    t.string   "firstname"
+    t.string   "lastname"
+    t.string   "encrypted_password",     default: ""
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,     null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.inet     "current_sign_in_ip"
     t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                             null: false
-    t.datetime "updated_at",                             null: false
-    t.boolean  "mailing_list",           default: false
-    t.string   "gender"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
   add_foreign_key "addresses", "users"
+  add_foreign_key "auctions", "users"
 end

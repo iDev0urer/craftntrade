@@ -17,10 +17,6 @@
 //= require cocoon
 //= require_tree .
 
-$(document).ready(function() {
-  $('#s3-uploader').S3Uploader();
-});
-
 $('.ui.checkbox').checkbox();
 
 $('.message .close').on('click', function() {
@@ -32,3 +28,11 @@ $('.dropdown')
     // you can use any ui transition
     transition: 'drop'
   });
+
+$(document).ready(function() {
+    $('.tooltip')
+        .popup({
+            inline: true,
+            on: 'hover'
+        });
+});

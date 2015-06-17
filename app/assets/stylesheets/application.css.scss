@@ -37,3 +37,36 @@ html.turbolinks-progress-bar::before {
   background-color: #3B579D !important;
   height: 3px !important;
 }
+
+.paypal {
+  color: #0B86C1;
+}
+
+.visa {
+  color: #164394;
+}
+
+.mastercard {
+  color: #F9B31F;
+}
+
+.american.express {
+  color: #24ADE3;
+}
+
+.bright {
+  opacity: 1 !important;
+}
+
+.notification {
+
+  &.item {
+    &.unread {
+      background-color: rgba(156,10,0,.05);
+    }
+  }
+}
+
+.big.bottom.margin {
+  margin-bottom: 40px;
+}

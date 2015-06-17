@@ -45,4 +45,5 @@ Rails.application.configure do
       :bucket => 'craftntrade'
     }
   }
+
 end

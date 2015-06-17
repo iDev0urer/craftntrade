@@ -4,10 +4,16 @@ source 'https://rubygems.org'
 # Anything rails/ruby specific
 ## ##
 gem 'rails', '4.2.1'
+gem 'foreman'
 gem 'pg'
 gem 'puma'
 gem 'sidekiq'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'kaminari'
+gem 'colorize'
+gem 'carrierwave'
+gem 'rmagick'
+gem 'fog'
 
 ## ##
 # All javascript frameworks here
@@ -28,10 +34,12 @@ gem 'sass-rails', '~> 5.0'
 # Anything to do with the user
 ## ##
 gem 'devise'
+gem 'devise_invitable', '~> 1.3.4'
+gem 'jwt'
+gem 'omniauth-jwt'
 gem 'cocoon'
-gem 'cancan'
+gem 'pundit'
 gem 'aws-sdk'
-gem 'paperclip'
 
 ## ##
 # All the testing stuff
