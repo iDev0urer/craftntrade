@@ -6,8 +6,13 @@ class AuctionsController < ApplicationController
 
   end
 
+  def show
+    @auction = Auction.find(params[:id])
+    @title = @auction.title
+  end
+
   def delete
-    check_for_api_key
+
     if params['id'].include?('..')
       @auction = Auction.where(id: params['id'].to_range)
       @destroy = @auction.destroy_all
@@ -27,40 +32,31 @@ class AuctionsController < ApplicationController
 
   end
 
-  def create
-
-    check_for_api_key
-
+  def new
     @auction = Auction.new
+  end
 
-    @auction.user_id = params['user_id']
-    @auction.title = params['title']
-    @auction.specifics = params['specifics']
-    @auction.details = params['details']
-    @auction.specifics = params['specifics']
-    @auction.listing_format = params['listing_format']
-    @auction.buy_now = params['buy_now']
-    @auction.start_date = params['start_date']
-    @auction.end_date = params['end_date']
-    @auction.added_date = params['added_date']
-    @auction.pick_up_only = params['pick_up_only']
-    @auction.free_shipping = params['free_shipping']
-    @auction.weight = params['weight']
-    @auction.width = params['width']
-    @auction.height = params['height']
-    @auction.length = params['length']
-    @auction.paypal_email = params['paypal_email']
-    @auction.item_location = params['item_location']
+  def create
+    auction = Auction.new(auction_params)
 
-    if @auction.save
-
-      #params[:photos].each do |photo|
-        @photo = @auction.photos.create!(photo: params['photos'], auction_id: @auction.id)
-      #end
-      render json: @auction
-    else
-      render nothing: true, status: :bad_request
-    end
+    #
+    # @auction.user_id = params['user_id']
+    # @auction.title = params['title']
+    # @auction.specifics = params['specifics']
+    # @auction.details = params['details']
+    # @auction.listing_format = params['listing_format']
+    # @auction.buy_now = params['buy_now']
+    # @auction.start_date = params['start_date']
+    # @auction.end_date = params['end_date']
+    # @auction.added_date = params['added_date']
+    # @auction.pick_up_only = params['pick_up_only']
+    # @auction.free_shipping = params['free_shipping']
+    # @auction.weight = params['weight']
+    # @auction.width = params['width']
+    # @auction.height = params['height']
+    # @auction.length = params['length']
+    # @auction.paypal_email = params['paypal_email']
+    # @auction.item_location = params['item_location']
 
   end
 
@@ -68,7 +64,11 @@ class AuctionsController < ApplicationController
 
   end
 
-  def show
+  ## ## ## ## ## ## ## ## ##
+  ## ##       API      ## ##
+  ## ## ## ## ## ## ## ## ##
+
+  def json_show
     check_for_api_key
 
     params['page'] ||= 1
@@ -79,16 +79,16 @@ class AuctionsController < ApplicationController
     order_by = params['order_by'].gsub(',', ' ');
 
     @auctions = Auction.page(params['page']).per(params['count']).order("#{order_by}")
-    render 'show.json.jbuilder'
+    render 'json_show.json.jbuilder'
   end
 
-  def search
+  def json_search
     check_for_api_key
     raise ArgumentError, 'No id parameter was defined' unless params['id']
     # rescue ActiveRecord::RecordNotFound do
 
     @auction = Auction.find(params['id'])
-    puts render 'search.json.jbuilder'
+    puts render 'json_search.json.jbuilder'
   end
 
   def check_for_api_key
@@ -103,4 +103,25 @@ class AuctionsController < ApplicationController
     headers['Access-Control-Max-Age'] = "1728000"
   end
 
+
+  def auction_params
+    params.require(:auction).permit( :user_id,
+                                     :title,
+                                     :specifics,
+                                     :details,
+                                     :listing_format,
+                                     :buy_now,
+                                     :start_date,
+                                     :end_date,
+                                     :added_date,
+                                     :pick_up_only,
+                                     :free_shipping,
+                                     :weight,
+                                     :width,
+                                     :height,
+                                     :length,
+                                     :paypal_email,
+                                     :item_location
+                                    )
+  end
 end

@@ -7,5 +7,6 @@ class User < ActiveRecord::Base
   devise :omniauthable, omniauth_providers: [:jwt]
 
   has_many :addresses
+  has_many :auctions
   has_one :api_key
 end

@@ -1,0 +1,22 @@
+.centered-navigation {
+  position: relative;
+  z-index: 1000;
+  height: 57px;
+  width: 100%;
+  zoom: 1;
+  font-size: 100%;
+  background: $ct-color-default;
+
+
+  .logo {
+    font-size: modular-scale(1);
+  }
+
+  &.sticky {
+    position: fixed;
+  }
+}
+
+.footer {
+  background: $ct-color-info;
+}

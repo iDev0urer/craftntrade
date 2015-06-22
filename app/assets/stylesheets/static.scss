@@ -1,3 +1,107 @@
-// Place all the styles related to the static controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.home.hero {
+  margin-top: -57px;
+  padding: 225px 0 125px 0;
+  text-align: left;
+  background: transparent image_url('banner-bg-1.jpg');
+
+  .hero-inner {
+    @include outer-container(90%);
+  }
+}
+
+.search.form {
+  position: relative;
+  text-align: left;
+  color: $ct-text-color;
+  width: 50%;
+
+  h1 {
+    color: #FFF;
+    font-size: modular-scale(2);
+  }
+
+  input[type=text] {
+    border-radius: 0;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    /* border: 1px solid #477198; */
+    border-right: none;
+    padding: 10px;
+    margin: 0;
+    font-size: modular-scale(1);
+    width: 80%;
+    height: 40px;
+    display: inline-block;
+
+    &:focus {
+      outline:none; /*or outline-color:#FFFFFF; if the first doesn't work*/
+      -webkit-box-shadow: none;
+      box-shadow: none;
+      border: none;
+      border-bottom-left-radius: 0;
+    }
+
+  }
+
+  .search.button {
+    border-radius: 0;
+    /* border: 1px solid #477198; */
+    border-left: none;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    padding: 10px 15px;
+    font-size: modular-scale(1);
+    height: 40px;
+    color: #FFF;
+    vertical-align: top;
+    background-color: #26CFE8;
+
+    &:hover {
+      background-color: darken($ct-color-primary, 10%);
+    }
+  }
+
+  .autocomplete.drawer {
+    width: 80%;
+    border: none;
+    border-top: 1px solid #AAA;
+    position: absolute;
+    z-index: 100;
+    background: rgba(255, 255, 255, 1);
+    overflow: scroll;
+    display: none;
+    max-height: 200px;
+
+    ul {
+      margin: 0;
+      padding: 0;
+
+      li {
+        list-style-type: none;
+        display: block;
+        width: 100%;
+
+        a {
+          padding: 5px 10px;
+          display: block;
+
+          &:hover {
+            background-color: lighten($ct-color-default, 30%);
+          }
+        }
+      }
+    }
+
+  }
+}
+
+.home.promotional {
+  @include flex-container;
+  min-height: 500px;
+
+  h1 {
+    flex: 1 100%;
+    text-align: center;
+    font-size: modular-scale(2);
+  }
+}

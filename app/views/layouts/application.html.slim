@@ -1,0 +1,16 @@
+doctype html
+html
+  head
+    title
+      == @title ? "#{@title} - Craft n Trade" : 'Craft n Trade - The auction site you\'ve been waiting for'
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    == render partial: '/layouts/partials/nav'
+    - unless @no_container
+      .main.container
+    = yield
+
+    - unless @no_footer
+      == render partial: 'refills/footer'
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true

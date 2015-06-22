@@ -1,72 +1,48 @@
-@import "semantic-ui";
-@import "semantic";
+@import 'normalize';
+
+// Include Bourbon, Neat, and Bitters
+@import "bourbon";
+@import 'components/overrides';
+@import "base/base";
+@import "neat";
+
+// Refills
+@import 'refills/footer';
+@import 'refills/hero';
+@import 'refills/centered-navigation';
+@import 'refills/cards';
+
+@import 'font-awesome';
+@import 'components/functions';
+@import 'components/variables';
+@import 'components/mixins';
 
 body {
-  padding-top: 50px;
+  color: $ct-text-color;
+  font-size: $ct-body-font-size;
 }
 
-.container {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
-@media(min-width: 768px) {
-  .container {
-    width: 750px;
-  }
-}
-@media(min-width: 992px) {
-  .container {
-    width: 970px;
-  }
-}
-@media(min-width: 1200px) {
-  .container {
-    width: 1170px;
-  }
-}
-.container-fluid {
-  padding-right: 15px;
-  padding-left: 15px;
-  margin-right: auto;
-  margin-left: auto;
-}
+a {
+  color: $ct-link-color;
+  text-decoration: none;
+  font-weight: 500;
 
-html.turbolinks-progress-bar::before {
-  background-color: #3B579D !important;
-  height: 3px !important;
-}
-
-.paypal {
-  color: #0B86C1;
-}
-
-.visa {
-  color: #164394;
-}
-
-.mastercard {
-  color: #F9B31F;
-}
-
-.american.express {
-  color: #24ADE3;
-}
-
-.bright {
-  opacity: 1 !important;
-}
-
-.notification {
-
-  &.item {
-    &.unread {
-      background-color: rgba(156,10,0,.05);
-    }
+  &:hover {
+    color: darken($ct-link-color, 10%);
+    text-decoration: none;
   }
 }
 
-.big.bottom.margin {
-  margin-bottom: 40px;
+ul {
+  padding: 0;
+  margin: 0;
 }
+
+.float.right {
+  float: right;
+}
+
+
+
+@import "layouts";
+@import "static";

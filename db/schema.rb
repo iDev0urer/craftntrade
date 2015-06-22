@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150615234055) do
+ActiveRecord::Schema.define(version: 20150620183959) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,8 +49,6 @@ ActiveRecord::Schema.define(version: 20150615234055) do
     t.boolean  "buy_now",        default: false,     null: false
     t.datetime "start_date",                         null: false
     t.datetime "end_date",                           null: false
-    t.datetime "added_date",                         null: false
-    t.datetime "ended_date",                         null: false
     t.integer  "pick_up_only",                       null: false
     t.boolean  "free_shipping"
     t.integer  "weight"
@@ -60,9 +58,29 @@ ActiveRecord::Schema.define(version: 20150615234055) do
     t.string   "paypal_email",                       null: false
     t.integer  "item_location",                      null: false
     t.json     "specifics"
+    t.integer  "category_id"
   end
 
   add_index "auctions", ["user_id"], name: "index_auctions_on_user_id", using: :btree
+
+  create_table "categories", force: :cascade do |t|
+    t.integer  "auction_id"
+    t.string   "title"
+    t.integer  "parent_id"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "categories", ["auction_id"], name: "index_categories_on_auction_id", using: :btree
+
+  create_table "currencies", force: :cascade do |t|
+    t.string   "name"
+    t.string   "symbol"
+    t.float    "conversion"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "auction_id"
@@ -93,4 +111,5 @@ ActiveRecord::Schema.define(version: 20150615234055) do
 
   add_foreign_key "addresses", "users"
   add_foreign_key "auctions", "users"
+  add_foreign_key "categories", "auctions"
 end

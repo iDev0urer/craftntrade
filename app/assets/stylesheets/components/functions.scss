@@ -1,0 +1,8 @@
+@function dynamic-text-color($color) {
+  @if (lightness( $color ) > 40) {
+    @return darken($color, 30%);
+  }
+  @else {
+    @return $color;
+  }
+}

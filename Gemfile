@@ -4,16 +4,18 @@ source 'https://rubygems.org'
 # Anything rails/ruby specific
 ## ##
 gem 'rails', '4.2.1'
-gem 'foreman'
 gem 'pg'
 gem 'puma'
-gem 'sidekiq'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'kaminari'
 gem 'colorize'
 gem 'carrierwave'
 gem 'rmagick'
-gem 'fog'
+gem 'slim'
+gem 'slim-rails'
+gem 'dotenv'
+gem 'sprockets'
+gem 'sprockets-es6'
 
 ## ##
 # All javascript frameworks here
@@ -27,8 +29,12 @@ gem 'uglifier', '>= 1.3.0'
 ## ##
 # Style specific
 ## ##
-gem 'semantic-ui-sass', github: 'doabit/semantic-ui-sass'
-gem 'sass-rails', '~> 5.0'
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'refills'
+gem 'sass-rails'
+gem 'font-awesome-rails'
 
 ## ##
 # Anything to do with the user

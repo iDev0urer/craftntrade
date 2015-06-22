@@ -1,11 +1,4 @@
 GIT
-  remote: git://github.com/doabit/semantic-ui-sass.git
-  revision: be4cb632ada01e484a0b17d1399c80cbafaa9a9f
-  specs:
-    semantic-ui-sass (1.12.3.0)
-      sass (~> 3.2)
-
-GIT
   remote: https://github.com/rails/turbolinks.git
   revision: 63c78377985245704f89cb847a1758c357731257
   specs:
@@ -15,7 +8,6 @@ GIT
 GEM
   remote: https://rubygems.org/
   specs:
-    CFPropertyList (2.3.0)
     actionmailer (4.2.1)
       actionpack (= 4.2.1)
       actionview (= 4.2.1)
@@ -60,9 +52,20 @@ GEM
       multi_json (~> 1.0)
     aws-sdk-resources (2.0.45)
       aws-sdk-core (= 2.0.45)
+    babel-source (5.6.3)
+    babel-transpiler (0.7.0)
+      babel-source (>= 4.0, < 6)
+      execjs (~> 2.0)
     bcrypt (3.1.10)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bitters (1.0.0)
+      bourbon (>= 3.2)
+      sass (>= 3.2)
+      thor
+    bourbon (4.2.3)
+      sass (~> 3.4)
+      thor
     builder (3.2.2)
     byebug (5.0.0)
       columnize (= 0.9.0)
@@ -71,8 +74,6 @@ GEM
       activesupport (>= 3.2.0)
       json (>= 1.7)
       mime-types (>= 1.16)
-    celluloid (0.16.0)
-      timers (~> 4.0.0)
     cocoon (1.2.6)
     coffee-rails (4.1.0)
       coffee-script (>= 2.2.0)
@@ -95,96 +96,15 @@ GEM
     devise_invitable (1.3.6)
       actionmailer (>= 3.2.6, < 5)
       devise (>= 3.2.0)
+    dotenv (2.0.1)
     erubis (2.7.0)
-    excon (0.45.3)
     execjs (2.5.2)
-    fission (0.5.0)
-      CFPropertyList (~> 2.2)
-    fog (1.27.0)
-      fog-atmos
-      fog-aws (~> 0.0)
-      fog-brightbox (~> 0.4)
-      fog-core (~> 1.27, >= 1.27.3)
-      fog-ecloud
-      fog-json
-      fog-profitbricks
-      fog-radosgw (>= 0.0.2)
-      fog-sakuracloud (>= 0.0.4)
-      fog-serverlove
-      fog-softlayer
-      fog-storm_on_demand
-      fog-terremark
-      fog-vmfusion
-      fog-voxel
-      fog-xml (~> 0.1.1)
-      ipaddress (~> 0.5)
-      nokogiri (~> 1.5, >= 1.5.11)
-    fog-atmos (0.1.0)
-      fog-core
-      fog-xml
-    fog-aws (0.0.8)
-      fog-core (~> 1.27)
-      fog-json (~> 1.0)
-      fog-xml (~> 0.1)
-      ipaddress (~> 0.8)
-    fog-brightbox (0.7.1)
-      fog-core (~> 1.22)
-      fog-json
-      inflecto (~> 0.0.2)
-    fog-core (1.27.4)
-      builder
-      excon (~> 0.38)
-      formatador (~> 0.2)
-      mime-types
-      net-scp (~> 1.1)
-      net-ssh (>= 2.1.3)
-    fog-ecloud (0.0.2)
-      fog-core
-      fog-xml
-    fog-json (1.0.0)
-      multi_json (~> 1.0)
-    fog-profitbricks (0.0.1)
-      fog-core
-      fog-xml
-      nokogiri
-    fog-radosgw (0.0.3)
-      fog-core (>= 1.21.0)
-      fog-json
-      fog-xml (>= 0.0.1)
-    fog-sakuracloud (1.0.0)
-      fog-core
-      fog-json
-    fog-serverlove (0.1.1)
-      fog-core
-      fog-json
-    fog-softlayer (0.4.0)
-      fog-core
-      fog-json
-    fog-storm_on_demand (0.1.0)
-      fog-core
-      fog-json
-    fog-terremark (0.0.3)
-      fog-core
-      fog-xml
-    fog-vmfusion (0.0.1)
-      fission
-      fog-core
-    fog-voxel (0.0.2)
-      fog-core
-      fog-xml
-    fog-xml (0.1.1)
-      fog-core
-      nokogiri (~> 1.5, >= 1.5.11)
-    foreman (0.78.0)
-      thor (~> 0.19.1)
-    formatador (0.2.5)
+    font-awesome-rails (4.3.0.0)
+      railties (>= 3.2, < 5.0)
     globalid (0.3.5)
       activesupport (>= 4.1.0)
     hashie (3.4.2)
-    hitimes (1.2.2)
     i18n (0.7.0)
-    inflecto (0.0.2)
-    ipaddress (0.8.0)
     jbuilder (2.2.16)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -207,9 +127,9 @@ GEM
     mini_portile (0.6.2)
     minitest (5.7.0)
     multi_json (1.11.0)
-    net-scp (1.2.1)
-      net-ssh (>= 2.6.5)
-    net-ssh (2.9.2)
+    neat (1.7.2)
+      bourbon (>= 4.0)
+      sass (>= 3.3)
     nokogiri (1.6.6.2)
       mini_portile (~> 0.6.0)
     omniauth (1.2.2)
@@ -260,9 +180,7 @@ GEM
       rails (>= 3.1)
       react-source (~> 0.13)
     react-source (0.13.3)
-    redis (3.2.1)
-    redis-namespace (1.5.2)
-      redis (~> 3.0, >= 3.0.4)
+    refills (0.1.0)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rmagick (2.15.2)
@@ -276,24 +194,29 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    sidekiq (3.3.4)
-      celluloid (>= 0.16.0)
-      connection_pool (>= 2.1.1)
-      json
-      redis (>= 3.0.6)
-      redis-namespace (>= 1.3.1)
+    slim (3.0.6)
+      temple (~> 0.7.3)
+      tilt (>= 1.3.3, < 2.1)
+    slim-rails (3.0.1)
+      actionmailer (>= 3.1, < 5.0)
+      actionpack (>= 3.1, < 5.0)
+      activesupport (>= 3.1, < 5.0)
+      railties (>= 3.1, < 5.0)
+      slim (~> 3.0)
     spring (1.3.6)
     sprockets (3.2.0)
       rack (~> 1.0)
+    sprockets-es6 (0.6.2)
+      babel-transpiler
+      sprockets (>= 3.0.0)
     sprockets-rails (2.3.1)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (>= 2.8, < 4.0)
+    temple (0.7.6)
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (1.4.1)
-    timers (4.0.1)
-      hitimes
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
     uglifier (2.7.1)
@@ -312,31 +235,37 @@ PLATFORMS
 
 DEPENDENCIES
   aws-sdk
+  bitters
+  bourbon
   byebug
   carrierwave
   cocoon
   colorize
   devise
   devise_invitable (~> 1.3.4)
-  fog
-  foreman
+  dotenv
+  font-awesome-rails
   jbuilder (~> 2.0)
   jquery-rails
   jwt
   kaminari
   minitest
+  neat
   omniauth-jwt
   pg
   puma
   pundit
   rails (= 4.2.1)
   react-rails
+  refills
   rmagick
-  sass-rails (~> 5.0)
+  sass-rails
   sdoc (~> 0.4.0)
-  semantic-ui-sass!
-  sidekiq
+  slim
+  slim-rails
   spring
+  sprockets
+  sprockets-es6
   turbolinks!
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
