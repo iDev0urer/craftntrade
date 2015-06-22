@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta charset="utf-8">
+
+<title>class AuctionsController - Rails Application Documentation</title>
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script src="./js/jquery.js"></script>
+<script src="./js/darkfish.js"></script>
+
+<link href="./css/fonts.css" rel="stylesheet">
+<link href="./css/rdoc.css" rel="stylesheet">
+
+
+
+<body id="top" role="document" class="class">
+<nav role="navigation">
+  <div id="project-navigation">
+    <div id="home-section" role="region" title="Quick navigation" class="nav-section">
+  <h2>
+    <a href="./index.html" rel="home">Home</a>
+  </h2>
+
+  <div id="table-of-contents-navigation">
+    <a href="./table_of_contents.html#pages">Pages</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </div>
+</div>
+
+    <div id="search-section" role="search" class="project-section initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <div id="search-field-wrapper">
+      <input id="search-field" role="combobox" aria-label="Search"
+             aria-autocomplete="list" aria-controls="search-results"
+             type="text" name="search" placeholder="Search" spellcheck="false"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </div>
+
+    <ul id="search-results" aria-label="Search Results"
+        aria-busy="false" aria-expanded="false"
+        aria-atomic="false" class="initially-hidden"></ul>
+  </form>
+</div>
+
+  </div>
+
+  
+
+  <div id="class-metadata">
+    
+    <div id="parent-class-section" class="nav-section">
+  <h3>Parent</h3>
+
+  
+  <p class="link"><a href="ApplicationController.html">ApplicationController</a>
+  
+</div>
+
+    
+    
+    <!-- Method Quickref -->
+<div id="method-list-section" class="nav-section">
+  <h3>Methods</h3>
+
+  <ul class="link-list" role="directory">
+    
+    <li ><a href="#method-i-check_for_api_key">#check_for_api_key</a>
+    
+    <li ><a href="#method-i-create">#create</a>
+    
+    <li ><a href="#method-i-delete">#delete</a>
+    
+    <li ><a href="#method-i-edit">#edit</a>
+    
+    <li ><a href="#method-i-index">#index</a>
+    
+    <li ><a href="#method-i-json_search">#json_search</a>
+    
+    <li ><a href="#method-i-json_show">#json_show</a>
+    
+    <li ><a href="#method-i-new">#new</a>
+    
+    <li ><a href="#method-i-show">#show</a>
+    
+  </ul>
+</div>
+
+  </div>
+</nav>
+
+<main role="main" aria-labelledby="class-AuctionsController">
+  <h1 id="class-AuctionsController" class="class">
+    class AuctionsController
+  </h1>
+
+  <section class="description">
+    
+  </section>
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section">
+       <header>
+         <h3>Public Instance Methods</h3>
+       </header>
+
+    
+      <div id="method-i-check_for_api_key" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">check_for_api_key</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="check_for_api_key-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 94</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">check_for_api_key</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;API key is invalid&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-constant">ApiKey</span>.<span class="ruby-identifier">is_valid?</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;api_key&#39;</span>])
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;API key needs to be included&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;api_key&#39;</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-create" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 39</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
+  <span class="ruby-identifier">auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">auction_params</span>)
+
+  <span class="ruby-comment">#</span>
+  <span class="ruby-comment"># @auction.user_id = params[&#39;user_id&#39;]</span>
+  <span class="ruby-comment"># @auction.title = params[&#39;title&#39;]</span>
+  <span class="ruby-comment"># @auction.specifics = params[&#39;specifics&#39;]</span>
+  <span class="ruby-comment"># @auction.details = params[&#39;details&#39;]</span>
+  <span class="ruby-comment"># @auction.listing_format = params[&#39;listing_format&#39;]</span>
+  <span class="ruby-comment"># @auction.buy_now = params[&#39;buy_now&#39;]</span>
+  <span class="ruby-comment"># @auction.start_date = params[&#39;start_date&#39;]</span>
+  <span class="ruby-comment"># @auction.end_date = params[&#39;end_date&#39;]</span>
+  <span class="ruby-comment"># @auction.added_date = params[&#39;added_date&#39;]</span>
+  <span class="ruby-comment"># @auction.pick_up_only = params[&#39;pick_up_only&#39;]</span>
+  <span class="ruby-comment"># @auction.free_shipping = params[&#39;free_shipping&#39;]</span>
+  <span class="ruby-comment"># @auction.weight = params[&#39;weight&#39;]</span>
+  <span class="ruby-comment"># @auction.width = params[&#39;width&#39;]</span>
+  <span class="ruby-comment"># @auction.height = params[&#39;height&#39;]</span>
+  <span class="ruby-comment"># @auction.length = params[&#39;length&#39;]</span>
+  <span class="ruby-comment"># @auction.paypal_email = params[&#39;paypal_email&#39;]</span>
+  <span class="ruby-comment"># @auction.item_location = params[&#39;item_location&#39;]</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-delete" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">delete</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="delete-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 14</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">delete</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;id&#39;</span>].<span class="ruby-identifier">include?</span>(<span class="ruby-string">&#39;..&#39;</span>)
+    <span class="ruby-ivar">@auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">where</span>(<span class="ruby-identifier">id</span><span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;id&#39;</span>].<span class="ruby-identifier">to_range</span>)
+    <span class="ruby-ivar">@destroy</span> = <span class="ruby-ivar">@auction</span>.<span class="ruby-identifier">destroy_all</span>
+  <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;id&#39;</span>] <span class="ruby-operator">===</span> <span class="ruby-string">&#39;all&#39;</span>
+    <span class="ruby-ivar">@auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">all</span>
+    <span class="ruby-ivar">@destroy</span> = <span class="ruby-ivar">@auction</span>.<span class="ruby-identifier">destroy_all</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-ivar">@auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;id&#39;</span>])
+    <span class="ruby-ivar">@destroy</span> = <span class="ruby-ivar">@auction</span>.<span class="ruby-identifier">destroy</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@destroy</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> {<span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-string">&#39;deleted&#39;</span>}
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">render</span> <span class="ruby-identifier">nothing</span><span class="ruby-operator">:</span> <span class="ruby-keyword">true</span>, <span class="ruby-identifier">status</span><span class="ruby-operator">:</span> <span class="ruby-value">:bad_request</span>
+  <span class="ruby-keyword">end</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-edit" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">edit</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="edit-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 63</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-index" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">index</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="index-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 5</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
+
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-json_search" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">json_search</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="json_search-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 85</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">json_search</span>
+  <span class="ruby-identifier">check_for_api_key</span>
+  <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-string">&#39;No id parameter was defined&#39;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;id&#39;</span>]
+  <span class="ruby-comment"># rescue ActiveRecord::RecordNotFound do</span>
+
+  <span class="ruby-ivar">@auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;id&#39;</span>])
+  <span class="ruby-identifier">puts</span> <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;json_search.json.jbuilder&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-json_show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">json_show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>## ## ## ## ## ## ##</p>
+
+<pre class="ruby"><span class="ruby-constant">API</span>      <span class="ruby-comment">## ##</span>
+</pre>
+
+<p>## ## ## ## ## ## ##</p>
+          
+          
+
+          
+          <div class="method-source-code" id="json_show-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 71</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">json_show</span>
+  <span class="ruby-identifier">check_for_api_key</span>
+
+  <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;page&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">1</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;count&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-value">25</span>
+  <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;count&#39;</span>] <span class="ruby-operator">===</span> <span class="ruby-string">&#39;all&#39;</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;count&#39;</span>] = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">count</span>() <span class="ruby-operator">:</span> <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;count&#39;</span>]
+
+  <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;order_by&#39;</span>] <span class="ruby-operator">||=</span> <span class="ruby-string">&#39;id,ASC&#39;</span>
+  <span class="ruby-identifier">order_by</span> = <span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;order_by&#39;</span>].<span class="ruby-identifier">gsub</span>(<span class="ruby-string">&#39;,&#39;</span>, <span class="ruby-string">&#39; &#39;</span>);
+
+  <span class="ruby-ivar">@auctions</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">page</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;page&#39;</span>]).<span class="ruby-identifier">per</span>(<span class="ruby-identifier">params</span>[<span class="ruby-string">&#39;count&#39;</span>]).<span class="ruby-identifier">order</span>(<span class="ruby-node">&quot;#{order_by}&quot;</span>)
+  <span class="ruby-identifier">render</span> <span class="ruby-string">&#39;json_show.json.jbuilder&#39;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 35</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
+  <span class="ruby-ivar">@auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">new</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File app/controllers/auctions_controller.rb, line 9</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
+  <span class="ruby-ivar">@auction</span> = <span class="ruby-constant">Auction</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@title</span> = <span class="ruby-ivar">@auction</span>.<span class="ruby-identifier">title</span>
+<span class="ruby-keyword">end</span></pre>
+          </div>
+          
+        </div>
+
+        
+
+        
+      </div>
+
+    
+    </section>
+  
+  </section>
+</main>
+
+
+<footer id="validator-badges" role="contentinfo">
+  <p><a href="http://validator.w3.org/check/referer">Validate</a>
+  <p>Generated by <a href="http://docs.seattlerb.org/rdoc/">RDoc</a> 4.2.0.
+  <p>Based on <a href="http://deveiate.org/projects/Darkfish-RDoc/">Darkfish</a> by <a href="http://deveiate.org">Michael Granger</a>.
+</footer>
+
